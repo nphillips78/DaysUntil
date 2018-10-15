@@ -12,9 +12,9 @@
     "react-scripts": "2.0.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "yarn start",
+    "build": "yarn build",
+    "test": "yarn test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
