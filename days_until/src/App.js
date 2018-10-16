@@ -6,18 +6,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={calendar-1.png} className="App-logo" alt="calendar" />
+          <img src={require('./calendar-1.png')} className="App-logo" alt="calendar" />
           <p>
            How many days until. . . 
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          
         </header>
       </div>
     );
