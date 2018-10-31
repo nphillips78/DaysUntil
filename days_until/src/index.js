@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-export default class Display extends React.Component {
+export default class Display extends Component {
   constructor() {
     super()
 
@@ -16,7 +16,7 @@ export default class Display extends React.Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval() => {
+    this.interval = setInterval(() => {
       const date = this.calculateCountdown(this.props.date)
       date ? this.setState(date) : this.stop()
     }, 60000)
@@ -29,7 +29,7 @@ export default class Display extends React.Component {
   calculateCountdown(endDate) {
     let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) /60000
 
-    if (diff <= 0 return false)
+    if (diff <= 0) return false
 
     const remaining = {
       years: 0,
@@ -48,7 +48,7 @@ export default class Display extends React.Component {
     }
     if (diff >= 60) {
       remaining.min = Math.floor(diff / 60)
-      diff -= remaiing.min * 60
+      diff -= remaining.min * 60
     }
 
     return remaining
@@ -89,7 +89,7 @@ export default class Display extends React.Component {
          <span className="Countdown-col">
           <span className="Countdown-col-element">
             <strong>{this.addLeadingZeros(countDown.min)}</strong>
-            <span>Min</span>
+            <span>Minutes</span>
           </span>
         </span>
       </div>
@@ -97,11 +97,11 @@ export default class Display extends React.Component {
   }
 }
 
-Countdown.propTypes = {
+Display.propTypes = {
   date: PropTypes.string.isRequired
 }
 
-Countdown.defaultProps = {
+Display.defaultProps = {
   date: new Date()
 }
 

@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={require('./calendar-1.png')} className="App-logo" alt="calendar" />
+          <img src={require('./12a1.svg')} className="App-logo" alt="calendar" />
           <p>
            How many days until. . . 
           </p>
