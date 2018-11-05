@@ -1,20 +1,46 @@
 import React from 'react';
-import Display from './countdown.js'
+import DaysLeft from './countdown.js'
 import './App.css';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      input: ""
+    }
+  }
+  changeTitle = (e) => {
+    const target = e.target
+    const value = target.value
+    this.setState({title: value})
+  }
+  handleChange = (e) => {
+
+    const target = e.target
+    const value = target.value
+    this.setState({text: value})  
+  }
   render() {
     const currentDate = new Date()
-    const year = (currentDate.getMonth() === 11 && currentDate.getDate() > 23) ? currentDate.getFullYear() + 1 : currentDate.getFullYear()
+    const year = (currentDate.getMonth() && currentDate.getDate) ? currentDate.getFullYear()  : currentDate.getFullYear()
+    console.log("year is " + year)
+    console.log("month is " + currentDate.getMonth())
+    console.log("today is " + currentDate.getDate())
+
     return (
       <div className = "App">
         <div className="App-header">
           <img src={require('./12a1.svg')} className="App-logo" alt="calendar"/>
           <h2> How many days until . . .</h2>
         </div>
-
-      <h3 className="tagline">Insert Day is on its way! (Midnight of 26th to 27th Nov, UTC time):</h3>
-      <Display date={`${year}-11-27T00:00:01`} />
+      <div className="input">  
+      <input value ={this.state.title} placeholder="Name the day!" onChange={this.changeTitle} type ="title"></input>
+      <input value ={this.state.text} placeholder="Month and Day" onChange ={this.handleChange} type ="text"></input>
+      </div>
+    
+      <h3 className="tagline">{this.state.title} is on its way!</h3>
+      <DaysLeft date={`${year}-${this.state.text}T00:00:00`} />
       </div>
     )
   }

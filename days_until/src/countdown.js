@@ -3,14 +3,16 @@ import './index.css';
 import PropTypes from 'prop-types';
 import * as serviceWorker from './serviceWorker';
 
-export default class Display extends React.Component {
+export default class DaysLeft extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      years: 0,
       days: 0,
       hours: 0,
-      minutes: 0
+      minutes: 0,
+      seconds: 0
     };
   }
 
@@ -18,7 +20,8 @@ export default class Display extends React.Component {
     this.interval = setInterval(() => {
       let date = this.calculateDays(this.props.date);
       date ? this.setState(date) : this.stop();
-    }, 60000);
+    }, 1000);
+    console.log(this.props.date);
   }
 
   componentWillUnmount() {
@@ -26,31 +29,40 @@ export default class Display extends React.Component {
   }
 
   calculateDays(endDate) {
-    let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 60000;
+    let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000;
 
-    if (diff <= 0) return false;
-
-    const remaining = {
+    const countDown = {
       years: 0,
       days: 0,
       hours: 0,
-      minutes: 0
+      minutes: 0,
+      seconds: 0
     };
 
-    if (diff >= 365.25 * 1440) {
-      remaining.years = Math.floor(diff / (365.25 * 1440));
-      diff -= remaining.years * 365.25 * 1440;
+    if (diff <= 0) return false;
+
+    if (diff >= 365.25 * 86400) {
+      // 365.25 * 24 * 60 * 60
+      countDown.years = Math.floor(diff / (365.25 * 86400));
+      diff -= countDown.years * 365.25 * 86400;
     }
-    if (diff >= 1440) {
-      remaining.days = Math.floor(diff / 1440);
-      diff -= remaining.days * 1440;
+    if (diff >= 86400) {
+      // 24 * 60 * 60
+      countDown.days = Math.floor(diff / 86400);
+      diff -= countDown.days * 86400;
+    }
+    if (diff >= 3600) {
+      // 60 * 60
+      countDown.hours = Math.floor(diff / 3600);
+      diff -= countDown.hours * 3600;
     }
     if (diff >= 60) {
-      remaining.min = Math.floor(diff / 60);
-      diff -= remaining.min * 60;
+      countDown.minutes = Math.floor(diff / 60);
+      diff -= countDown.minutes * 60;
     }
+    countDown.seconds = diff;
 
-    return remaining;
+    return countDown;
   }
 
   stop() {
@@ -62,7 +74,6 @@ export default class Display extends React.Component {
     while (value.length < 2) {
       value = '0' + value;
     }
-
     return value;
   }
 
@@ -87,7 +98,7 @@ export default class Display extends React.Component {
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <strong>{this.addLeadingZeros(countDown.min)}</strong>
+            <strong>{this.addLeadingZeros(countDown.minutes)}</strong>
             <span>Minutes</span>
           </span>
         </span>
@@ -96,11 +107,11 @@ export default class Display extends React.Component {
   }
 }
 
-Display.propTypes = {
+DaysLeft.propTypes = {
   date: PropTypes.string.isRequired
 };
 
-Display.defaultProps = {
+DaysLeft.defaultProps = {
   date: new Date()
 };
 
