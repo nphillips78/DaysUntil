@@ -2,6 +2,7 @@ import React from 'react';
 import DaysLeft from './countdown.js'
 import './App.css';
 
+
 export default class App extends React.Component {
   constructor(props) {
     super(props)
@@ -16,7 +17,6 @@ export default class App extends React.Component {
     this.setState({title: value})
   }
   handleChange = (e) => {
-
     const target = e.target
     const value = target.value
     this.setState({text: value})  
