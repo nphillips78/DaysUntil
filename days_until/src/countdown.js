@@ -2,7 +2,6 @@ import React from 'react';
 import './index.css';
 import PropTypes from 'prop-types';
 import * as serviceWorker from './serviceWorker';
-
 export default class DaysLeft extends React.Component {
   constructor(props) {
     super(props);
@@ -69,6 +68,7 @@ export default class DaysLeft extends React.Component {
     clearInterval(this.interval);
   }
 
+  
   addLeadingZeros(value) {
     value = String(value);
     while (value.length < 2) {

@@ -1,6 +1,7 @@
 import React from 'react';
 import DaysLeft from './countdown.js';
 import './App.css';
+import { Button } from 'react-bootstrap';
 
 export default class CountdownView extends React.Component {
   constructor(props) {
@@ -20,6 +21,13 @@ export default class CountdownView extends React.Component {
     const value = target.value;
     this.setState({ text: value });
   };
+  onSubmit = (e) => {
+    e.preventDefault();
+    const form = {
+     name: this.state.name,
+     email: this.state.email
+    }     
+  }                                        
   render() {
     const currentDate = new Date();
     const year =
@@ -57,6 +65,8 @@ export default class CountdownView extends React.Component {
 
         <h3 className="tagline">{this.state.title} is on its way!</h3>
         <DaysLeft date={`${year}-${this.state.text}T00:00:00`} />
+        <Button onClick={(e) => this.onSubmit(e)}>Submit</Button>
+
       </div>
     );
   }
