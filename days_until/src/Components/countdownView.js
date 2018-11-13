@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from  'prop-types';
 import DaysLeft from './countdown.js';
-import './App.css';
-import { withStyles, TextField } from '@material-ui/core'; 
+import '../App.css';
 import { Button } from 'react-bootstrap';
+import DatePicker from './DatePicker';
 
 export default class CountdownView extends React.Component {
   constructor(props) {
@@ -44,7 +43,7 @@ export default class CountdownView extends React.Component {
       <div className="App">
         <div className="App-header">
           <img
-            src={require('./12a1.svg')}
+            src={require('./Assets/12a1.svg')}
             className="App-logo"
             alt="calendar"
           />
@@ -57,12 +56,8 @@ export default class CountdownView extends React.Component {
             onChange={this.changeTitle}
             type="title"
           />
-          <input
-            value={this.state.text}
-            placeholder="Month and Day"
-            onChange={this.handleChange}
-            type="text"
-          />
+          <input onChange={this.handleChange} />
+          <DatePicker />
         </div>
 
         <h3 className="tagline">{this.state.title} is on its way!</h3>

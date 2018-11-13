@@ -1,7 +1,7 @@
 import React from 'react';
-import './index.css';
+import '../index.css';
 import PropTypes from 'prop-types';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from '../serviceWorker';
 export default class DaysLeft extends React.Component {
   constructor(props) {
     super(props);

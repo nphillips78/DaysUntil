@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CountdownView from './countdownView';
+import CountdownView from './Components/countdownView';
 
 class Home extends Component {
   login() {
