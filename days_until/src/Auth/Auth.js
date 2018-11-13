@@ -1,4 +1,4 @@
-import history from '../../../../auth0-react-samples/01-Login/src/history';
+import history from '../history';
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
 

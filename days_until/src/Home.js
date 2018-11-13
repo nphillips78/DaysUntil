@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CountdownView from './countdownView';
 
 class Home extends Component {
   login() {
@@ -10,9 +11,8 @@ class Home extends Component {
       <div className="container">
         {
           isAuthenticated() && (
-              <h4>
-                You are logged in!
-              </h4>
+              <CountdownView />
+
             )
         }
         {

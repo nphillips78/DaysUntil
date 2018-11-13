@@ -2,7 +2,7 @@ import React from 'react';
 import DaysLeft from './countdown.js';
 import './App.css';
 
-export default class countdownView extends React.Component {
+export default class CountdownView extends React.Component {
   constructor(props) {
     super(props);
 
