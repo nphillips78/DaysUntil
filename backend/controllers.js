@@ -3,7 +3,7 @@ const { mysecret } = require('../config');
 const User = require('./models');
 const mongoose =require('mongoose');
 
-const createUser = (rew, res) => {
+const createUser = (req, res) => {
   const { username, password } = req.body;
   const user = new User(req.body);
   user.save(function(err, user) {
