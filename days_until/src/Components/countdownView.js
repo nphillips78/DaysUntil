@@ -1,10 +1,11 @@
 import React from 'react';
 import DaysLeft from './countdown.js';
 import '../App.css';
-import { Button } from 'react-bootstrap';
-import DatePicker from './DatePicker';
+import { withStyles, TextField, Button, Paper, Typography } from '@material-ui/core';
+import { styles } from './styles';
 
-export default class CountdownView extends React.Component {
+
+class CountdownView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,11 +26,16 @@ export default class CountdownView extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     const form = {
-     name: this.state.name,
-     email: this.state.email
-    }     
-  }                                        
+     title: this.state.title,
+     date: this.state.date,
+    }; 
+  } 
+  
+
+
   render() {
+    
+    const { classes } = this.props;
     const currentDate = new Date();
     const year =
       currentDate.getMonth() && currentDate.getDate
@@ -39,32 +45,29 @@ export default class CountdownView extends React.Component {
     console.log('month is ' + currentDate.getMonth());
     console.log('today is ' + currentDate.getDate());
 
-    return (
-      <div className="App">
+    return <div className="App">
         <div className="App-header">
-          <img
-            src={require('./Assets/12a1.svg')}
-            className="App-logo"
-            alt="calendar"
-          />
+          <img src={require('./Assets/12a1.svg')} className="App-logo" alt="calendar" />
           <h2> How many days until . . .</h2>
         </div>
-        <div className="input">
-          <input
-            value={this.state.title}
-            placeholder="Name the day!"
-            onChange={this.changeTitle}
-            type="title"
-          />
-          <input onChange={this.handleChange} />
-          <DatePicker />
+        <form className={classes.container} noValidate autoComplete="off">
+          <TextField value={this.state.title} label="Name the event." className={classes.textField} onChange={this.changeTitle} type="title" InputLabelProps={{ shrink: true }} />
+          <TextField value={this.state.date} className={classes.textField} onChange={this.handleChange} type="date" InputLabelProps={{ shrink: true }} />
+        </form>
+        <Button variant="contained" className={classes.button} onClick={e => this.onSubmit(e)}>
+          Start the Countdown!
+        </Button>
+        <div>
+          <Paper className={classes.root} elevation={1}>
+            <Typography variant="h5" component="h3">
+              {this.state.title} is on its way!
+            </Typography>
+            <DaysLeft date={`${year}-${this.state.text}T00:00:00`} />
+          </Paper>
         </div>
-
-        <h3 className="tagline">{this.state.title} is on its way!</h3>
-        <DaysLeft date={`${year}-${this.state.text}T00:00:00`} />
-        <Button onClick={(e) => this.onSubmit(e)}>Submit</Button>
-
-      </div>
-    );
+      </div>;
   }
 }
+
+
+export default withStyles(styles)(CountdownView);
