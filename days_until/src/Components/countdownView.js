@@ -3,8 +3,7 @@ import DaysLeft from './countdown.js';
 import '../App.css';
 import { withStyles, TextField, Button, Paper, Typography } from '@material-ui/core';
 import { styles } from './styles';
-import 'react-day-picker/lib/style.css';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
+
 
 
 class CountdownView extends React.Component {
@@ -18,7 +17,7 @@ class CountdownView extends React.Component {
    pickDay = () => {
     const FORMAT = 'M-D';
     return <div>
-        <DayPickerInput format={FORMAT} onDayChange={day => console.log(day)} />
+       
       </div>;
   }
   changeTitle = e => {
