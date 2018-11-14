@@ -21,7 +21,7 @@ class Home extends Component {
                 You are not logged in! Please{' '}
                 <a
                   style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
+                  href={this.login.bind(this)}
                 >
                   Log In
                 </a>
