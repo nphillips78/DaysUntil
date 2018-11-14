@@ -15,7 +15,7 @@ server.use(bodyParser.json())
 server.use(cors())
 
 server.listen(port, () => {
-  console.log('Server listening on port ${port}');
+  console.log(`Server listening on port ${port}`);
 });
 
 module.exports = { server }
