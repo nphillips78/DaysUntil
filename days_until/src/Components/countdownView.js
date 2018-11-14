@@ -3,6 +3,8 @@ import DaysLeft from './countdown.js';
 import '../App.css';
 import { withStyles, TextField, Button, Paper, Typography } from '@material-ui/core';
 import { styles } from './styles';
+import 'react-day-picker/lib/style.css';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 
 class CountdownView extends React.Component {
@@ -12,6 +14,12 @@ class CountdownView extends React.Component {
     this.state = {
       input: ''
     };
+  }
+   pickDay = () => {
+    const FORMAT = 'M-D';
+    return <div>
+        <DayPickerInput format={FORMAT} onDayChange={day => console.log(day)} />
+      </div>;
   }
   changeTitle = e => {
     const target = e.target;
@@ -57,7 +65,8 @@ class CountdownView extends React.Component {
         </div>
         <form className={classes.container} noValidate autoComplete="off">
           <TextField id="outlined" value={this.state.title} label="Name the event" className={classes.textField} onChange={this.changeTitle} type="title" margin="normal" placeholder={`ex: "${"Babe's Birthday"}" `} variant="outlined" InputLabelProps={{ shrink: true }} />
-          <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} />
+         {/* <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} /> */}
+         {this.pickDay()}
         </form>
         <Button variant="contained" className={classes.button} onClick={e => this.onSubmit(e)}>
           Start the Countdown!
