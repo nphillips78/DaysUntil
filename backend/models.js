@@ -15,10 +15,10 @@ const UserSchema = Schema({
   }
 });
 
-UserSchema.methods.checkPassword = function(potentionalPassword, cb) {
-  bcrypt.compare(potentialPassword, this.password, (err, isMatch) => {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
-};
-module.exports = mongoose.model('User', UserSchema);
+// UserSchema.methods.checkPassword = function(potentionalPassword, cb) {
+//   bcrypt.compare(potentialPassword, this.password, (err, isMatch) => {
+//     if (err) return cb(err);
+//     cb(null, isMatch);
+//   });
+// };
+// module.exports = mongoose.model('User', UserSchema);
