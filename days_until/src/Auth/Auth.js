@@ -8,7 +8,7 @@ export default class Auth {
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile '
   });
 
   constructor() {
@@ -16,10 +16,20 @@ export default class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.getProfile = this.getProfile.bind(this);
+    this.getIdToken = this.getIdToken.bind(this);
   }
 
   login() {
     this.auth0.authorize();
+  }
+
+  getProfile() {
+    return this.profile;
+  }
+
+  getIdToken() {
+    return this.idToken;
   }
 
   handleAuthentication() {

@@ -5,7 +5,6 @@ import { withStyles, TextField, Button, Paper, Typography } from '@material-ui/c
 import { styles } from './styles';
 
 
-
 class CountdownView extends React.Component {
   constructor(props) {
     super(props);
