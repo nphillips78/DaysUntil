@@ -21,15 +21,20 @@ class CountdownView extends React.Component {
   handleChange = e => {
     const target = e.target;
     const value = target.value;
-    this.setState({ text: value });
+    this.setState({ date: value });
   };
   onSubmit = (e) => {
     e.preventDefault();
-    const form = {
+    const form = {          //get form values
      title: this.state.title,
      date: this.state.date,
     }; 
-  } 
+   /* backend.post(form);  //TODO:change this to post to our databaser server
+      this.setState({  //clear input fields
+        title: '',
+        date: ''
+      }); */
+  }; 
   
 
 
@@ -51,8 +56,8 @@ class CountdownView extends React.Component {
           <h2> How many days until . . .</h2>
         </div>
         <form className={classes.container} noValidate autoComplete="off">
-          <TextField value={this.state.title} label="Name the event." className={classes.textField} onChange={this.changeTitle} type="title" InputLabelProps={{ shrink: true }} />
-          <TextField value={this.state.date} className={classes.textField} onChange={this.handleChange} type="date" InputLabelProps={{ shrink: true }} />
+          <TextField id="outlined" value={this.state.title} label="Name the event" className={classes.textField} onChange={this.changeTitle} type="title" margin="normal" placeholder={`ex: "${"Babe's Birthday"}" `} variant="outlined" InputLabelProps={{ shrink: true }} />
+          <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} />
         </form>
         <Button variant="contained" className={classes.button} onClick={e => this.onSubmit(e)}>
           Start the Countdown!
@@ -62,7 +67,7 @@ class CountdownView extends React.Component {
             <Typography variant="h5" component="h3">
               {this.state.title} is on its way!
             </Typography>
-            <DaysLeft date={`${year}-${this.state.text}T00:00:00`} />
+            <DaysLeft date={`${year}-${this.state.date}T00:00:00`} />
           </Paper>
         </div>
       </div>;
