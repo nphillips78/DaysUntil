@@ -51,6 +51,18 @@ class CountdownView extends React.Component {
     console.log('month is ' + currentDate.getMonth());
     console.log('today is ' + currentDate.getDate());
 
+    // TODO: NavBar or side nav
+    // TODO: User admin type view - choose settings/pics and choose default countdown
+    // TODO: customizable picture choices
+    // TODO: fix login verbiage to be english
+    // TODO: form validation/error messages
+    // TODO: shared/public view for family
+    // TODO: make shareable to FB/Insta/Twitter?
+    // TODO: SMS reminders
+    // TODO: fix netlify
+    // TODO: deploy backend
+    // TODO: make it mobile
+    
     return (<div className="App">
         <div className="App-header">
           <img src={require('./Assets/12a1.svg')} className="App-logo" alt="calendar" />

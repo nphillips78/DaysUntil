@@ -5,7 +5,7 @@ const helmet = require('helmet');     //secures express requests
 const morgan = require('morgan');     //provides logging for express
 const mongoose = require('mongoose');
 const port = process.env.PORT || 5000;
-const routes = require('./routes'); //still need to create endpoints for the entries
+const routes = require('./routes'); //TODO:still need to create endpoints for the entries
 const server = express();
 
 //create a database connection for all the entries (be sure to define the schema)

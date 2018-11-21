@@ -7,8 +7,13 @@ const Schema = mongoose.Schema;
  */
 const EntrySchema = Schema({
   
-    entry: {
+    title: {
       type: String,
+      unique: true,
+      required: true,
+    },
+    date: {
+      type: Date,
       unique: true,
       required: true,
     }
