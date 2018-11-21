@@ -3,22 +3,18 @@ import DaysLeft from './countdown.js';
 import '../App.css';
 import { withStyles, TextField, Button, Paper, Typography } from '@material-ui/core';
 import { styles } from './styles';
-
+import moment from 'moment';
 
 class CountdownView extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      input: ''
+      input: '',
+      date: moment().format('YYYY-MM-DD'),
     };
   }
-   pickDay = () => {
-    const FORMAT = 'M-D';
-    return <div>
-       
-      </div>;
-  }
+
   changeTitle = e => {
     const target = e.target;
     const value = target.value;
@@ -45,7 +41,6 @@ class CountdownView extends React.Component {
 
 
   render() {
-    
     const { classes } = this.props;
     const currentDate = new Date();
     const year =
@@ -56,15 +51,14 @@ class CountdownView extends React.Component {
     console.log('month is ' + currentDate.getMonth());
     console.log('today is ' + currentDate.getDate());
 
-    return <div className="App">
+    return (<div className="App">
         <div className="App-header">
           <img src={require('./Assets/12a1.svg')} className="App-logo" alt="calendar" />
           <h2> How many days until . . .</h2>
         </div>
         <form className={classes.container} noValidate autoComplete="off">
           <TextField id="outlined" value={this.state.title} label="Name the event" className={classes.textField} onChange={this.changeTitle} type="title" margin="normal" placeholder={`ex: "${"Babe's Birthday"}" `} variant="outlined" InputLabelProps={{ shrink: true }} />
-         {/* <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} /> */}
-         {this.pickDay()}
+         { <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} /> }
         </form>
         <Button variant="contained" className={classes.button} onClick={e => this.onSubmit(e)}>
           Start the Countdown!
@@ -77,8 +71,8 @@ class CountdownView extends React.Component {
             <DaysLeft date={`${year}-${this.state.date}T00:00:00`} />
           </Paper>
         </div>
-      </div>;
-  }
+    </div>);
+  };
 }
 
 
