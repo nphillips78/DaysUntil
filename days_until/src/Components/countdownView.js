@@ -11,7 +11,7 @@ class CountdownView extends React.Component {
 
     this.state = {
       input: '',
-      date: moment().format('YYYY-MM-DD'),
+      date: moment().format('MM-DD'),
     };
   }
 
@@ -68,7 +68,7 @@ class CountdownView extends React.Component {
             <Typography variant="h5" component="h3">
               {this.state.title} is on its way!
             </Typography>
-            <DaysLeft date={`${year}-${this.state.date}T00:00:00`} />
+            <DaysLeft date={`${this.state.date}T00:00:00`} />
           </Paper>
         </div>
     </div>);
