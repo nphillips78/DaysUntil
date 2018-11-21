@@ -19,6 +19,7 @@ export default class App extends React.Component {
     const { isAuthenticated } = this.props.auth;
 
     return (
+      // authO login stuff
       <div>
         <Navbar fluid>
           <Navbar.Header>

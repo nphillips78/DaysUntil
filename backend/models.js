@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
  * this needs to be filled out correctly to your specs
  */
 const EntrySchema = Schema({
-  
+    // each entry requires a title and a date
     title: {
       type: String,
       unique: true,

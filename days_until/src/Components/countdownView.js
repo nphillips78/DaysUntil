@@ -11,11 +11,13 @@ class CountdownView extends React.Component {
 
     this.state = {
       input: '',
+      // use this to format date from calendar format to the format we need for our math
       date: moment().format('MM-DD'),
     };
   }
 
   changeTitle = e => {
+    // updates the tagline
     const target = e.target;
     const value = target.value;
     this.setState({ title: value });
@@ -26,6 +28,7 @@ class CountdownView extends React.Component {
     this.setState({ date: value });
   };
   onSubmit = (e) => {
+    // updates the countdown
     e.preventDefault();
     const form = {          //get form values
      title: this.state.title,
@@ -52,8 +55,6 @@ class CountdownView extends React.Component {
     console.log('today is ' + currentDate.getDate());
 
     // TODO: NavBar or side nav
-    // TODO: User admin type view - choose settings/pics and choose default countdown
-    // TODO: customizable picture choices
     // TODO: fix login verbiage to be english
     // TODO: form validation/error messages
     // TODO: shared/public view for family
