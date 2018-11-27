@@ -2,5 +2,6 @@
   ID = "0e911832-7b2c-43f2-901f-fe6d8854fbeb"
 
 [Build]
-  Publish = ""
+  Publish = "build"
+  Command = "yarn build"
   Functions = ""

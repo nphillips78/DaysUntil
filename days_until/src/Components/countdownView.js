@@ -63,8 +63,8 @@ class CountdownView extends React.Component {
         </div>
         <form className={classes.container} noValidate autoComplete="off">
           <TextField id="outlined" value={this.state.title} label="Name the event" className={classes.textField} onChange={this.changeTitle} type="title" margin="normal" placeholder={`ex: "${"Babe's Birthday"}" `} variant="outlined" InputLabelProps={{ shrink: true }} />
-         {/* <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} /> */}
-         {this.pickDay()}
+         <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} /> 
+        
         </form>
         <Button variant="contained" className={classes.button} onClick={e => this.onSubmit(e)}>
           Start the Countdown!
