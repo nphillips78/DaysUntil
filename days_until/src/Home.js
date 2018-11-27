@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CountdownView from './Components/countdownView';
-
 class Home extends Component {
   login() {
     this.props.auth.login();
