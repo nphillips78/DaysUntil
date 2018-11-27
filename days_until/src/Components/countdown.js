@@ -16,6 +16,7 @@ export default class DaysLeft extends React.Component {
   }
 
   componentDidMount() {
+    // sets update interval to 1 sec
     this.interval = setInterval(() => {
       let date = this.calculateDays(this.props.date);
       date ? this.setState(date) : this.stop();
@@ -28,6 +29,7 @@ export default class DaysLeft extends React.Component {
   }
 
   calculateDays(endDate) {
+    // basic math for finding countdown subtracts current date from target date
     let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000;
 
     const countDown = {
@@ -39,26 +41,30 @@ export default class DaysLeft extends React.Component {
     };
 
     if (diff <= 0) return false;
-
+    // years
     if (diff >= 365.25 * 86400) {
       // 365.25 * 24 * 60 * 60
       countDown.years = Math.floor(diff / (365.25 * 86400));
       diff -= countDown.years * 365.25 * 86400;
     }
+    // days
     if (diff >= 86400) {
       // 24 * 60 * 60
       countDown.days = Math.floor(diff / 86400);
       diff -= countDown.days * 86400;
     }
+    // hours
     if (diff >= 3600) {
       // 60 * 60
       countDown.hours = Math.floor(diff / 3600);
       diff -= countDown.hours * 3600;
     }
+    // minutes
     if (diff >= 60) {
       countDown.minutes = Math.floor(diff / 60);
       diff -= countDown.minutes * 60;
     }
+    // seconds - we don't show seconds on our countdown but we left it in so the math would work right
     countDown.seconds = diff;
 
     return countDown;
@@ -68,7 +74,7 @@ export default class DaysLeft extends React.Component {
     clearInterval(this.interval);
   }
 
-  
+  // so the countdown is readable
   addLeadingZeros(value) {
     value = String(value);
     while (value.length < 2) {

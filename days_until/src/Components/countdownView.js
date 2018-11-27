@@ -3,23 +3,21 @@ import DaysLeft from './countdown.js';
 import '../App.css';
 import { withStyles, TextField, Button, Paper, Typography } from '@material-ui/core';
 import { styles } from './styles';
-
+import moment from 'moment';
 
 class CountdownView extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      input: ''
+      input: '',
+      // use this to format date from calendar format to the format we need for our math
+      date: moment().format('MM-DD'),
     };
   }
-   pickDay = () => {
-    const FORMAT = 'M-D';
-    return <div>
-       
-      </div>;
-  }
+
   changeTitle = e => {
+    // updates the tagline
     const target = e.target;
     const value = target.value;
     this.setState({ title: value });
@@ -30,6 +28,7 @@ class CountdownView extends React.Component {
     this.setState({ date: value });
   };
   onSubmit = (e) => {
+    // updates the countdown
     e.preventDefault();
     const form = {          //get form values
      title: this.state.title,
@@ -45,7 +44,6 @@ class CountdownView extends React.Component {
 
 
   render() {
-    
     const { classes } = this.props;
     const currentDate = new Date();
     const year =
@@ -56,15 +54,24 @@ class CountdownView extends React.Component {
     console.log('month is ' + currentDate.getMonth());
     console.log('today is ' + currentDate.getDate());
 
-    return <div className="App">
+    // TODO: NavBar or side nav
+    // TODO: fix login verbiage to be english
+    // TODO: form validation/error messages
+    // TODO: shared/public view for family
+    // TODO: make shareable to FB/Insta/Twitter?
+    // TODO: SMS reminders
+    // TODO: fix netlify
+    // TODO: deploy backend
+    // TODO: make it mobile
+    
+    return (<div className="App">
         <div className="App-header">
           <img src={require('./Assets/12a1.svg')} className="App-logo" alt="calendar" />
           <h2> How many days until . . .</h2>
         </div>
         <form className={classes.container} noValidate autoComplete="off">
           <TextField id="outlined" value={this.state.title} label="Name the event" className={classes.textField} onChange={this.changeTitle} type="title" margin="normal" placeholder={`ex: "${"Babe's Birthday"}" `} variant="outlined" InputLabelProps={{ shrink: true }} />
-         <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} /> 
-        
+         { <TextField id="outlined" value={this.state.date} label="Choose a date" className={classes.textField} onChange={this.handleChange} type="date" variant="outlined" margin="normal" InputLabelProps={{ shrink: true }} /> }
         </form>
         <Button variant="contained" className={classes.button} onClick={e => this.onSubmit(e)}>
           Start the Countdown!
@@ -74,11 +81,11 @@ class CountdownView extends React.Component {
             <Typography variant="h5" component="h3">
               {this.state.title} is on its way!
             </Typography>
-            <DaysLeft date={`${year}-${this.state.date}T00:00:00`} />
+            <DaysLeft date={`${this.state.date}T00:00:00`} />
           </Paper>
         </div>
-      </div>;
-  }
+    </div>);
+  };
 }
 
 

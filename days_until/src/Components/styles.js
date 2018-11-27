@@ -9,17 +9,16 @@ const styles = theme => ({
     width: 200
   },
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing.unit
   },
   input: {
-    display: 'none',
+    display: 'none'
   },
   root: {
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing. unit * 2,
-  },
-  
+    paddingBottom: theme.spacing.unit * 2
+  }
 });
 
 export { styles };
