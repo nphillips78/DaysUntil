@@ -9,7 +9,8 @@ const {
     deleteEntry
 } = require('./controllers');
 
-
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
 module.exports = app => {
 //everything using checkJwt middleware will not be publicly available, otherwise if not using it, it is publicly available
 const checkJwt = jwt({
