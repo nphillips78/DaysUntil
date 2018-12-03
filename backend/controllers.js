@@ -36,7 +36,8 @@ const createNewEntry = (req, res) => {
   const {title, date} = req.body;
   const entry = new Entry ({
     id,
-    date
+    date,
+    author: req.user.name //this is added in because of jwt middleware security
   });
   
   Entry.save()

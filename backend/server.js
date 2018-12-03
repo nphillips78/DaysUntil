@@ -6,6 +6,8 @@ const morgan = require('morgan');     //provides logging for express
 const mongoose = require('mongoose');
 const port = process.env.PORT || 5000;
 const routes = require('./routes'); //TODO:still need to create endpoints for the entries
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
 const server = express();
 
 //create a database connection for all the entries (be sure to define the schema)
